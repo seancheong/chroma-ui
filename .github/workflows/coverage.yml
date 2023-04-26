@@ -1,11 +1,11 @@
-name: Chroma UI CI
+name: Code Coverage
 
 on:
-  pull_request:
+  push:
     branches: ['main']
 
 jobs:
-  test-and-build:
+  unit-test-coverage:
     runs-on: ubuntu-latest
 
     strategy:
@@ -24,10 +24,7 @@ jobs:
         run: npm install
 
       - name: Run tests
-        run: npm run test -- --watchAll=false
+        run: npm run test -- --coverage . --watchAll=false
 
-      - name: Build Chroma UI
-        run: npm run build
-
-      - name: Build Storybook
-        run: npm run build-storybook
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
