@@ -1,6 +1,7 @@
 # Chroma UI Design System
 
 [![codecov](https://codecov.io/gh/seancheong/chroma-ui/branch/main/graph/badge.svg?token=7TDRD5ZPNZ)](https://codecov.io/gh/seancheong/chroma-ui)
+[![Depfu](https://badges.depfu.com/badges/a6fbc240723c745c994477f00426e68f/overview.svg)](https://depfu.com/github/seancheong/chroma-ui?project_id=38391)
 
 The design system is built with [React](https://react.dev), [Tailwind CSS](https://tailwindcss.com) and [Storybook](https://storybook.js.org).\
 It provides a set of resuable UI components that are easy to use and customize.
