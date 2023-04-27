@@ -6,6 +6,8 @@
 The design system is built with [React](https://react.dev), [Tailwind CSS](https://tailwindcss.com) and [Storybook](https://storybook.js.org).\
 It provides a set of resuable UI components that are easy to use and customize.
 
+View the live Storybook at https://seancheong.github.io/chroma-ui
+
 ## Available Scripts
 
 In the project directory, you can run:
