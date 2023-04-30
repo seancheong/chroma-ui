@@ -2,11 +2,26 @@
 
 [![codecov](https://codecov.io/gh/seancheong/chroma-ui/branch/main/graph/badge.svg?token=7TDRD5ZPNZ)](https://codecov.io/gh/seancheong/chroma-ui)
 [![Depfu](https://badges.depfu.com/badges/a6fbc240723c745c994477f00426e68f/overview.svg)](https://depfu.com/github/seancheong/chroma-ui?project_id=38391)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-The design system is built with [React](https://react.dev), [Tailwind CSS](https://tailwindcss.com) and [Storybook](https://storybook.js.org).\
+> :warning: Disclaimer: This design system is currently in the early stages of development. Many components are not yet ready for production use. Please exercise caution when using this package in your projects."
+
+Chroma UI Design System is built with [React](https://react.dev), [Tailwind CSS](https://tailwindcss.com) and [Storybook](https://storybook.js.org).\
 It provides a set of resuable UI components that are easy to use and customize.
 
 View the live Storybook at https://seancheong.github.io/chroma-ui
+
+## Tailwind CSS Integration
+
+Chroma UI Design System comes with integrated Tailwind CSS for styling. However, Tailwind CSS is not a mandatory requirement for using this package. If you prefer not to use Tailwind CSS, you can customize the components using just regular CSS.
+
+**_If you don't have Tailwind CSS installed in your project_**, you will have to import the precompiled CSS file provided by this package:
+
+```javascript
+import 'chroma-ui/dist/index.css';
+```
+
+**_If you already have Tailwind CSS installed in your project_**, you don't need to import the `chroma-ui/dist/index.css` file. The components will use the existing Tailwind CSS configuration in your project.
 
 ## Available Scripts
 
