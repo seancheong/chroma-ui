@@ -3,9 +3,7 @@ name: Chroma UI Continuous Deployment
 on:
   push:
     branches: ['main']
-    # Only deploy when files in src/components changed
-    paths:
-      - 'src/components/**'
+  workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -16,12 +14,74 @@ permissions:
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
-  group: 'pages'
+  group: 'deployments'
   cancel-in-progress: false
 
 jobs:
+  # Check if version is already published
+  check_version:
+    runs-on: ubuntu-latest
+    outputs:
+      skip_deploy: ${{ steps.check_version.outputs.skip_deploy }}
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Check if version is already published
+        id: check_version
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          NPM_VERSIONS=$(npm view chroma-ui versions --json)
+          if [[ $NPM_VERSIONS =~ \"$PACKAGE_VERSION\" ]]; then
+            echo "Version $PACKAGE_VERSION is already published"
+            echo "::set-output name=skip_deploy::true"
+          else
+            echo "Version $PACKAGE_VERSION is not published"
+            echo "::set-output name=skip_deploy::false"
+          fi
+
+  # Publish chroma-ui to npm
+  publish_npm:
+    needs: check_version
+    if: needs.check_version.outputs.skip_deploy == 'false'
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build-library
+
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
   # Single deploy job since we're just deploying
-  deploy:
+  deploy_storybook:
+    needs: check_version
+    if: needs.check_version.outputs.skip_deploy == 'false'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
