@@ -3,6 +3,7 @@ import typescript from 'rollup-plugin-typescript2';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import terser from '@rollup/plugin-terser';
+import postcss from 'rollup-plugin-postcss';
 
 const config = {
   input: 'src/components/index.ts',
@@ -28,6 +29,14 @@ const config = {
     peerDepsExternal(),
     resolve(),
     commonjs(),
+    postcss({
+      config: {
+        path: './postcss.config.js',
+      },
+      extensions: ['.css'],
+      minimize: true,
+      extract: true,
+    }),
     typescript({
       tsconfigOverride: {
         exclude: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.stories.tsx'],
