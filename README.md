@@ -4,12 +4,24 @@
 [![Depfu](https://badges.depfu.com/badges/a6fbc240723c745c994477f00426e68f/overview.svg)](https://depfu.com/github/seancheong/chroma-ui?project_id=38391)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-> :warning: Disclaimer: This design system is currently in the early stages of development. Many components are not yet ready for production use. Please exercise caution when using this package in your projects."
+> :warning: Disclaimer: This design system is currently in the early stages of development. Many components are not yet ready for production use. Please exercise caution when using this package in your projects.
 
-Chroma UI Design System is built with [React](https://react.dev), [Tailwind CSS](https://tailwindcss.com) and [Storybook](https://storybook.js.org).\
+Chroma UI Design System is built with [React](https://react.dev), [Tailwind CSS](https://tailwindcss.com), [TypeScript](https://www.typescriptlang.org) and [Storybook](https://storybook.js.org).\
 It provides a set of resuable UI components that are easy to use and customize.
 
 View the live Storybook at https://seancheong.github.io/chroma-ui
+
+## Installation
+
+You can install `chroma-ui` package using either npm or yarn.
+
+```sh
+# npm
+npm install chroma-ui
+
+# yarn
+yarn add chroma-ui
+```
 
 ## Tailwind CSS Integration
 
