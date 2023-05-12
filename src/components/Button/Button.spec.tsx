@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import React from 'react';
 import { Button } from './Button';
 
 const PRIMARY_CLASS = 'bg-blue-500';
