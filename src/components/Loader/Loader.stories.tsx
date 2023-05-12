@@ -16,7 +16,7 @@ const meta = {
         'The color of the loader in hex code, e.g. #000000. It will override the color prop',
     },
     size: {
-      control: 'number',
+      control: 'select',
       description:
         'The size of the loader, it uses the width class of TailwindCSS, e.g. 8 is w-8',
     },
