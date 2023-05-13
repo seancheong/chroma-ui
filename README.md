@@ -27,13 +27,55 @@ yarn add chroma-ui
 
 Chroma UI Design System comes with integrated Tailwind CSS for styling. However, Tailwind CSS is not a mandatory requirement for using this package. If you prefer not to use Tailwind CSS, you can customize the components using just regular CSS.
 
-**_If you don't have Tailwind CSS installed in your project_**, you will have to import the precompiled CSS file provided by this package:
+### If you are not using Tailwind CSS in your application:
+
+You will have to import the precompiled CSS file provided by this package inside the main entry file. This CSS file contains all the necessary styles required for the components.
 
 ```javascript
 import 'chroma-ui/dist/index.css';
 ```
 
-**_If you already have Tailwind CSS installed in your project_**, you don't need to import the `chroma-ui/dist/index.css` file. The components will use the existing Tailwind CSS configuration in your project.
+### If you are using Tailwind CSS in your application:
+
+There are two options available:
+
+#### Option 1: Use your own Tailwind CSS setup
+
+If you want to use your own Tailwind CSS setup, you should add the required classes to the safelist in your Tailwind CSS configuration.
+
+Chroma UI dynamically generates certain classes, so to ensure Tailwind CSS is able to generate the required stylesheet by these classes in production, you need to add them to the safelist. Below is the safelist configuration for Chroma UI:
+
+```javascript
+// tailwind.config.js
+
+const colors =
+  '(red|orange|yellow|green|teal|blue|violet|purple|pink|gray|black)';
+
+module.exports = {
+  // ...
+  safelist: [
+    {
+      pattern: new RegExp(`border-r-${colors}.*`),
+    },
+    {
+      pattern: /w-.*/,
+    },
+  ],
+  // ...
+};
+```
+
+Please note that you'll need to keep the safelist updated if new dynamic classes are added in future versions of Chroma UI.
+
+#### Option 2: Import the Chroma UI CSS file
+
+Alternatively, you can import the index.css from Chroma UI in your application. This CSS file includes all the necessary styles for the Chroma UI components, and you don't have to worry about the safelist in this case.
+
+```javascript
+import 'chroma-ui/dist/index.css';
+```
+
+Please note that by doing this, you will be including the styles for all Chroma UI components, which might increase the size of your CSS bundle. Use this option if you are using a significant number of Chroma UI components in your application or if keeping the safelist updated is not feasible.
 
 ## Available Scripts
 
