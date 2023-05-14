@@ -18,43 +18,24 @@ const meta = {
     },
     primary: {
       control: 'boolean',
-      table: {
-        defaultValue: {
-          summary: false,
-        },
-      },
     },
     secondary: {
       control: 'boolean',
-      table: {
-        defaultValue: {
-          summary: false,
-        },
-      },
     },
     danger: {
       control: 'boolean',
-      table: {
-        defaultValue: {
-          summary: false,
-        },
-      },
     },
     disabled: {
       control: 'boolean',
-      table: {
-        defaultValue: {
-          summary: false,
-        },
-      },
     },
     fullwidth: {
       control: 'boolean',
-      table: {
-        defaultValue: {
-          summary: false,
-        },
-      },
+      description: 'The button with full width',
+    },
+    loading: {
+      control: 'boolean',
+      description:
+        'The button with loader, it will disable the button when true',
     },
   },
   args: {
@@ -122,6 +103,27 @@ export const Disabled: Story = {
   },
 };
 
+export const Loading: Story = {
+  render: (args: Args) => (
+    <div style={{ display: 'flex', gap: 10 }}>
+      <Button {...args} />
+      <Button primary {...args} />
+      <Button secondary {...args} />
+      <Button danger {...args} />
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'A loading button will show a loader and disable the button',
+      },
+    },
+  },
+  args: {
+    loading: true,
+  },
+};
+
 export const Customize: Story = {
   ...Template,
   parameters: {
@@ -142,6 +144,13 @@ export const Customize: Story = {
 
 export const FullWidth: Story = {
   ...Template,
+  parameters: {
+    docs: {
+      description: {
+        story: 'The button will fill the width of the parent container',
+      },
+    },
+  },
   args: {
     fullwidth: true,
   },
