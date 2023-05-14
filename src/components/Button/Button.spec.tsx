@@ -82,7 +82,7 @@ describe('Button Component', () => {
     );
   });
 
-  it('should render the button with dark style if it is not default button', () => {
+  it('should render the button with dark style loader if it is not default button', () => {
     // when
     render(
       <Button primary loading>
