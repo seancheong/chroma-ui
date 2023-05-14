@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import { Size } from '../models';
 
@@ -9,7 +9,7 @@ interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   text?: string;
 }
 
-export const Loader: React.FC<PropsWithChildren<IProps>> = ({
+export const Loader: React.FC<IProps> = ({
   background = 'light',
   size = 8,
   overlay = false,
