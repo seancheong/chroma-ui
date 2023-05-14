@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from './Button';
 
 const PRIMARY_CLASS = 'bg-blue-500';
-const SECONDARY_CLASS = 'bg-[#343839]';
+const SECONDARY_CLASS = 'bg-neutral-800';
 const DANGER_CLASS = 'bg-red-500';
 
 describe('Button Component', () => {
@@ -68,5 +68,33 @@ describe('Button Component', () => {
 
     // then
     expect(screen.getByRole('button')).toHaveClass('w-full');
+  });
+
+  it('should render the button with loader', () => {
+    // when
+    render(<Button loading>Click me</Button>);
+
+    // then
+    expect(screen.getByRole('button')).toBeDisabled();
+    expect(screen.getByRole('status')).toBeInTheDocument();
+    expect(screen.getByTestId('spinner')).toHaveClass(
+      'border-gray-300 border-r-black'
+    );
+  });
+
+  it('should render the button with dark style loader if it is not default button', () => {
+    // when
+    render(
+      <Button primary loading>
+        Click me
+      </Button>
+    );
+
+    // then
+    expect(screen.getByRole('button')).toBeDisabled();
+    expect(screen.getByRole('status')).toBeInTheDocument();
+    expect(screen.getByTestId('spinner')).toHaveClass(
+      'border-gray-500 border-r-white'
+    );
   });
 });
