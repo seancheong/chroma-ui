@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Input } from './Input';
 
@@ -32,15 +33,43 @@ describe('Input Component', () => {
     expect(screen.getByRole('textbox')).toHaveAttribute('disabled');
   });
 
-  it('should render the input with disabled state and loader inside if loading prop is passed', () => {
+  it('should not allow user to type if disabled prop is passed', async () => {
+    // given
+    const testString = 'test';
+
+    // when
+    render(<Input disabled />);
+    const input = screen.getByRole('textbox');
+
+    await waitFor(async () => {
+      await userEvent.type(input, testString);
+    });
+
+    // then
+    expect(input).toHaveValue('');
+  });
+
+  it('should allow user to type if disabled prop is not passed', async () => {
+    // given
+    const testString = 'test';
+
+    // when
+    render(<Input />);
+    const input = screen.getByRole('textbox');
+
+    await waitFor(async () => {
+      await userEvent.type(input, testString);
+    });
+
+    // then
+    expect(input).toHaveValue(testString);
+  });
+
+  it('should render the input with loading state if loading prop is passed', () => {
     // when
     render(<Input loading />);
 
     // then
-    expect(screen.getByRole('textbox')).toHaveClass(
-      'opacity-50 border-gray-300/80 pl-12'
-    );
-    expect(screen.getByRole('textbox')).toHaveAttribute('disabled');
     expect(screen.getByRole('status')).toBeInTheDocument();
   });
 

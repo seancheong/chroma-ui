@@ -1,6 +1,5 @@
 import { Args, Meta, StoryObj } from '@storybook/react';
 import { Input } from './Input';
-import { HTMLInputTypeAttribute } from 'react';
 
 const meta = {
   title: 'Core/Input',
@@ -13,7 +12,7 @@ const meta = {
     },
     loading: {
       control: 'boolean',
-      description: 'The input showing loader inside and is disabled',
+      description: 'The input showing loader inside',
     },
     error: {
       control: 'boolean',
@@ -67,7 +66,7 @@ export const Loading: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Same as disabled, but with loader inside',
+        story: 'The input showing loader inside',
       },
     },
   },
