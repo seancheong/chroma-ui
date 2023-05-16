@@ -57,7 +57,6 @@ export const Input: React.FC<IProps> = ({
             isFocused ? '100' : '50'
           }`}
         >
-          <span>test</span>
           <Loader size="6" />
         </div>
       )}

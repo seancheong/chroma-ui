@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Input } from './Input';
@@ -59,6 +59,7 @@ describe('Input Component', () => {
 
     await waitFor(async () => {
       await userEvent.type(input, testString);
+      await fireEvent.blur(input);
     });
 
     // then
