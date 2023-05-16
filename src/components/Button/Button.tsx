@@ -29,7 +29,8 @@ export const Button: React.FC<PropsWithChildren<IProps>> = ({
       className={classnames(
         'flex justify-center items-center text-base rounded-md py-2 px-4 min-w-[120px] min-h-[40px]',
         {
-          'bg-gray-200 hover:bg-gray-300 active:bg-gray-400': isDefault,
+          'bg-gray-200 hover:bg-gray-300 active:bg-gray-400 text-gray-900':
+            isDefault,
         },
         {
           'bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white':
