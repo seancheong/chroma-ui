@@ -66,3 +66,11 @@ export type Size =
   | 'min'
   | 'max'
   | 'fit';
+
+export type IconName =
+  | 'CreditCardIcon'
+  | 'DocumentDuplicateIcon'
+  | 'MagnifyingGlassIcon'
+  | 'ShoppingCartIcon'
+  | 'TagIcon'
+  | 'UserIcon';
