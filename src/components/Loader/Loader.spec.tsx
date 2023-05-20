@@ -9,7 +9,7 @@ describe('Loader Component', () => {
 
     // then
     expect(screen.getByTestId('spinner')).toHaveClass(
-      'border-gray-300 border-r-black w-8'
+      'border-gray-300 border-r-black w-6'
     );
   });
 

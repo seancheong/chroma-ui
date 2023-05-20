@@ -27,13 +27,10 @@ const meta = {
       control: 'select',
       options: icons.reduce(
         (acc, iconName) => {
-          acc[iconName] = <Icon name={iconName} size="6" />;
+          acc[iconName] = <Icon name={iconName} />;
           return acc;
         },
-        { null: null, Loader: <Loader size="6" /> } as Record<
-          string,
-          JSX.Element | null
-        >
+        { null: null, Loader: <Loader /> } as Record<string, JSX.Element | null>
       ),
       description: 'The icon to display inside the input',
     },
@@ -99,7 +96,7 @@ export const WithIcon: Story = {
   ...Template,
   args: {
     placeholder: 'search...',
-    icon: <Icon name="MagnifyingGlassIcon" size="6" />,
+    icon: <Icon name="MagnifyingGlassIcon" />,
   },
   parameters: {
     docs: {
@@ -114,7 +111,7 @@ export const WithIconRight: Story = {
   ...Template,
   args: {
     placeholder: 'e.g. http://www.shorturl.com/1234567890',
-    icon: <Icon name="DocumentDuplicateIcon" size="6" />,
+    icon: <Icon name="DocumentDuplicateIcon" />,
     iconPosition: 'right',
   },
   parameters: {
@@ -130,7 +127,7 @@ export const WithLoader: Story = {
   ...Template,
   args: {
     placeholder: 'search...',
-    icon: <Loader size="6" />,
+    icon: <Loader />,
   },
   parameters: {
     docs: {
@@ -148,7 +145,7 @@ export const WithButton: Story = {
         <Input
           className="rounded-r-none"
           placeholder="tag name"
-          icon={<Icon name="TagIcon" size="6" />}
+          icon={<Icon name="TagIcon" />}
         />
         <Button className="rounded-l-none" primary>
           Add Tag

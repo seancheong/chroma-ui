@@ -58,7 +58,7 @@ export const Button: React.FC<PropsWithChildren<IProps>> = ({
       {...props}
     >
       {loading ? (
-        <Loader size="6" background={isDefault ? 'light' : 'dark'} />
+        <Loader background={isDefault ? 'light' : 'dark'} />
       ) : (
         children
       )}

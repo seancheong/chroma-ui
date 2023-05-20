@@ -102,8 +102,8 @@ export const Background: Story = {
 export const Size: Story = {
   render: (args: Args) => (
     <div style={{ display: 'flex', gap: '1rem' }}>
-      <Icon name="CreditCardIcon" size="6" {...args} />
       <Icon name="CreditCardIcon" {...args} />
+      <Icon name="CreditCardIcon" size="8" {...args} />
       <Icon name="CreditCardIcon" size="12" {...args} />
       <Icon name="CreditCardIcon" size="16" {...args} />
     </div>

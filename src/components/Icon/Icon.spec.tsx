@@ -11,7 +11,7 @@ describe('Icon Component', () => {
     render(<Icon name={icon} />);
 
     // then
-    expect(screen.getByLabelText(icon)).toHaveClass('w-8 text-gray-900');
+    expect(screen.getByLabelText(icon)).toHaveClass('w-6 text-gray-900');
   });
 
   it('should render white icon if background prop is set to dark', () => {

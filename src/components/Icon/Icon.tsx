@@ -46,7 +46,7 @@ const outlineIconMap = {
 export const Icon: React.FC<IProps> = ({
   name,
   background = 'light',
-  size = '8',
+  size = '6',
   type = 'solid',
   className,
   ...props
