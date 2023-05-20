@@ -19,7 +19,7 @@ import React from 'react';
 import { Size, IconName } from '../models';
 
 interface IProps extends React.SVGAttributes<SVGElement> {
-  icon: IconName;
+  name: IconName;
   background?: 'light' | 'dark';
   size?: Size;
   type?: 'solid' | 'outline';
@@ -44,15 +44,15 @@ const outlineIconMap = {
 };
 
 export const Icon: React.FC<IProps> = ({
-  icon,
+  name,
   background = 'light',
   size = '8',
   type = 'solid',
   className,
   ...props
 }) => {
-  const CustomTag = iconMap[icon];
-  const OutlineCustomTag = outlineIconMap[icon];
+  const IconTag = iconMap[name];
+  const OutlineIconTag = outlineIconMap[name];
   const classes = classNames(
     `w-${size}`,
     { 'text-gray-900': background === 'light' },
@@ -60,9 +60,9 @@ export const Icon: React.FC<IProps> = ({
     className
   );
 
-  return type === 'solid' ? (
-    <CustomTag aria-label={icon} className={classes} {...props} />
+  return type === 'outline' ? (
+    <OutlineIconTag aria-label={name} className={classes} {...props} />
   ) : (
-    <OutlineCustomTag aria-label={icon} className={classes} {...props} />
+    <IconTag aria-label={name} className={classes} {...props} />
   );
 };

@@ -8,7 +8,7 @@ describe('Icon Component', () => {
     const icon = 'MagnifyingGlassIcon';
 
     // when
-    render(<Icon icon={icon} />);
+    render(<Icon name={icon} />);
 
     // then
     expect(screen.getByLabelText(icon)).toHaveClass('w-8 text-gray-900');
@@ -20,7 +20,7 @@ describe('Icon Component', () => {
     const background = 'dark';
 
     // when
-    render(<Icon icon={icon} background={background} />);
+    render(<Icon name={icon} background={background} />);
 
     // then
     expect(screen.getByLabelText(icon)).toHaveClass('text-white');
@@ -32,7 +32,7 @@ describe('Icon Component', () => {
     const size = '6';
 
     // when
-    render(<Icon icon={icon} size={size} />);
+    render(<Icon name={icon} size={size} />);
 
     // then
     expect(screen.getByLabelText(icon)).toHaveClass(`w-${size}`);
@@ -45,7 +45,7 @@ describe('Icon Component', () => {
     const size = '6';
 
     // when
-    render(<Icon icon={icon} type={type} size={size} />);
+    render(<Icon name={icon} type={type} size={size} />);
 
     // then
     expect(screen.getByLabelText(icon)).toHaveClass(`w-${size} text-gray-900`);

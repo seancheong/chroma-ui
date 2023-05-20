@@ -14,10 +14,10 @@ const meta = {
     },
   },
   argTypes: {
-    icon: {
+    name: {
       control: 'select',
       description:
-        'The icons that available from HeroIcons, please refer to the list of icons below',
+        'The name of the icons that available from HeroIcons, please refer to the list of icons below',
     },
     background: {
       control: 'radio',
@@ -40,9 +40,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const Template: Story = {
-  render: (args: Args) => <Icon icon="MagnifyingGlassIcon" {...args} />,
+  render: (args: Args) => <Icon name="MagnifyingGlassIcon" {...args} />,
   args: {
-    icon: 'MagnifyingGlassIcon',
+    name: 'MagnifyingGlassIcon',
   },
 };
 
@@ -53,7 +53,7 @@ export const Default: Story = {
 export const Solid: Story = {
   ...Template,
   args: {
-    icon: 'ShoppingCartIcon',
+    name: 'ShoppingCartIcon',
     type: 'solid',
   },
   parameters: {
@@ -68,7 +68,7 @@ export const Solid: Story = {
 export const Outline: Story = {
   ...Template,
   args: {
-    icon: 'ShoppingCartIcon',
+    name: 'ShoppingCartIcon',
     type: 'outline',
   },
   parameters: {
@@ -83,7 +83,7 @@ export const Outline: Story = {
 export const Background: Story = {
   ...Template,
   args: {
-    icon: 'CreditCardIcon',
+    name: 'CreditCardIcon',
     type: 'outline',
     background: 'dark',
   },
@@ -102,14 +102,14 @@ export const Background: Story = {
 export const Size: Story = {
   render: (args: Args) => (
     <div style={{ display: 'flex', gap: '1rem' }}>
-      <Icon icon="CreditCardIcon" size="6" {...args} />
-      <Icon icon="CreditCardIcon" {...args} />
-      <Icon icon="CreditCardIcon" size="12" {...args} />
-      <Icon icon="CreditCardIcon" size="16" {...args} />
+      <Icon name="CreditCardIcon" size="6" {...args} />
+      <Icon name="CreditCardIcon" {...args} />
+      <Icon name="CreditCardIcon" size="12" {...args} />
+      <Icon name="CreditCardIcon" size="16" {...args} />
     </div>
   ),
   args: {
-    icon: 'CreditCardIcon',
+    name: 'CreditCardIcon',
     type: 'outline',
   },
   parameters: {
@@ -124,7 +124,7 @@ export const Size: Story = {
 export const Customize: Story = {
   ...Template,
   args: {
-    icon: 'TagIcon',
+    name: 'TagIcon',
     className: '!text-teal-500',
     style: { width: '3em' },
   },
