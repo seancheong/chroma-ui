@@ -1,19 +1,22 @@
 import classNames from 'classnames';
 import React, { HTMLInputTypeAttribute, useState } from 'react';
-import { Loader } from '../Loader';
 
 interface IProps extends React.HTMLAttributes<HTMLInputElement> {
-  loading?: boolean;
+  placeholder?: string;
   disabled?: boolean;
   error?: boolean;
   type?: HTMLInputTypeAttribute;
+  icon?: React.ReactElement;
+  iconPosition?: 'left' | 'right';
 }
 
 export const Input: React.FC<IProps> = ({
+  placeholder,
   disabled = false,
-  loading = false,
   error = false,
   type = 'text',
+  icon = null,
+  iconPosition = 'left',
   className,
   ...props
 }) => {
@@ -22,6 +25,7 @@ export const Input: React.FC<IProps> = ({
   return (
     <div className="relative">
       <input
+        placeholder={placeholder}
         type={type}
         disabled={disabled}
         className={classNames(
@@ -30,10 +34,13 @@ export const Input: React.FC<IProps> = ({
             'opacity-50 border-gray-300/80': disabled,
           },
           {
-            'pl-12': loading,
+            'pl-12': icon && iconPosition === 'left',
           },
           {
-            'focus:ring-blue-400 focus:border-blue-400 placeholder-gray-300 focus:placeholder-gray-400':
+            'pr-12': icon && iconPosition === 'right',
+          },
+          {
+            'focus:ring-blue-500 focus:border-blue-500 placeholder-gray-300 focus:placeholder-gray-400':
               !error,
           },
           {
@@ -51,13 +58,25 @@ export const Input: React.FC<IProps> = ({
         {...props}
       />
 
-      {loading && (
+      {icon && (
         <div
-          className={`absolute top-1/2 -translate-y-1/2 left-4 opacity-${
-            isFocused ? '100' : '50'
-          }`}
+          className={classNames(
+            'absolute top-1/2 -translate-y-1/2',
+            {
+              'left-4': iconPosition === 'left',
+            },
+            {
+              'right-4': iconPosition === 'right',
+            },
+            {
+              'opacity-50': !isFocused,
+            },
+            {
+              'opacity-100': isFocused,
+            }
+          )}
         >
-          <Loader size="6" />
+          {icon}
         </div>
       )}
     </div>
