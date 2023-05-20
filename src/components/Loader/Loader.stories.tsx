@@ -76,10 +76,10 @@ export const Size: Story = {
   render: (args: Args) => (
     <div style={{ display: 'flex', gap: '1em' }}>
       <div>
-        <Loader size="6" />
+        <Loader />
       </div>
       <div>
-        <Loader />
+        <Loader size="8" />
       </div>
       <div>
         <Loader size="12" />

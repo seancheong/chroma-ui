@@ -11,7 +11,7 @@ interface IProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const Loader: React.FC<IProps> = ({
   background = 'light',
-  size = 8,
+  size = 6,
   overlay = false,
   text = 'Loading...',
   className,

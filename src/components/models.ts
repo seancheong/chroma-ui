@@ -67,10 +67,13 @@ export type Size =
   | 'max'
   | 'fit';
 
-export type IconName =
-  | 'CreditCardIcon'
-  | 'DocumentDuplicateIcon'
-  | 'MagnifyingGlassIcon'
-  | 'ShoppingCartIcon'
-  | 'TagIcon'
-  | 'UserIcon';
+export const icons = [
+  'CreditCardIcon',
+  'DocumentDuplicateIcon',
+  'MagnifyingGlassIcon',
+  'ShoppingCartIcon',
+  'TagIcon',
+  'UserIcon',
+] as const;
+
+export type IconName = (typeof icons)[number];

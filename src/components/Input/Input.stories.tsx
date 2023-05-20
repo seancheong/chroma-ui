@@ -1,5 +1,9 @@
 import { Args, Meta, StoryObj } from '@storybook/react';
+import { icons } from '../models';
 import { Input } from './Input';
+import { Icon } from '../Icon';
+import { Loader } from '../Loader';
+import { Button } from '../Button';
 
 const meta = {
   title: 'Core/Input',
@@ -10,10 +14,6 @@ const meta = {
       control: 'boolean',
       description: 'The input is disabled',
     },
-    loading: {
-      control: 'boolean',
-      description: 'The input showing loader inside',
-    },
     error: {
       control: 'boolean',
       description: 'The input with error style',
@@ -23,6 +23,21 @@ const meta = {
       options: ['text', 'password', 'email', 'number', 'search'],
       description: 'The type of the input',
     },
+    icon: {
+      control: 'select',
+      options: icons.reduce(
+        (acc, iconName) => {
+          acc[iconName] = <Icon name={iconName} />;
+          return acc;
+        },
+        { null: null, Loader: <Loader /> } as Record<string, JSX.Element | null>
+      ),
+      description: 'The icon to display inside the input',
+    },
+    iconPosition: {
+      control: 'radio',
+      description: 'The position of the icon',
+    },
   },
 } satisfies Meta<typeof Input>;
 
@@ -30,15 +45,18 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const Template: Story = {
-  render: (args: Args) => <Input placeholder="search..." {...args} />,
+  render: (args: Args) => <Input {...args} />,
 };
 
-export const Default: Story = {
+export const Stadard: Story = {
   ...Template,
+  args: {
+    placeholder: 'search...',
+  },
   parameters: {
     docs: {
       description: {
-        story: 'The default input',
+        story: 'The standard input',
       },
     },
   },
@@ -47,6 +65,7 @@ export const Default: Story = {
 export const Disabled: Story = {
   ...Template,
   args: {
+    placeholder: 'search...',
     disabled: true,
   },
   parameters: {
@@ -58,29 +77,86 @@ export const Disabled: Story = {
   },
 };
 
-export const Loading: Story = {
-  ...Template,
-  args: {
-    loading: true,
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'The input showing loader inside',
-      },
-    },
-  },
-};
-
 export const Error: Story = {
   ...Template,
   args: {
+    placeholder: 'search...',
     error: true,
   },
   parameters: {
     docs: {
       description: {
         story: 'The input with error style',
+      },
+    },
+  },
+};
+
+export const WithIcon: Story = {
+  ...Template,
+  args: {
+    placeholder: 'search...',
+    icon: <Icon name="MagnifyingGlassIcon" />,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'The input with icon, the icon is on the left by default',
+      },
+    },
+  },
+};
+
+export const WithIconRight: Story = {
+  ...Template,
+  args: {
+    placeholder: 'e.g. http://www.shorturl.com/1234567890',
+    icon: <Icon name="DocumentDuplicateIcon" />,
+    iconPosition: 'right',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'The input with icon on the right',
+      },
+    },
+  },
+};
+
+export const WithLoader: Story = {
+  ...Template,
+  args: {
+    placeholder: 'search...',
+    icon: <Loader />,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'The input with loader as the icon',
+      },
+    },
+  },
+};
+
+export const WithButton: Story = {
+  render: (args: Args) => {
+    return (
+      <div className="flex">
+        <Input
+          className="rounded-r-none"
+          placeholder="tag name"
+          icon={<Icon name="TagIcon" />}
+        />
+        <Button className="rounded-l-none" primary>
+          Add Tag
+        </Button>
+      </div>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'An example of input with button',
       },
     },
   },

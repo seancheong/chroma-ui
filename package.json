@@ -81,7 +81,8 @@
     "collectCoverageFrom": [
       "src/components/**/*.{ts,tsx}",
       "!src/components/**/*.stories.{ts,tsx}",
-      "!src/components/**/index.ts"
+      "!src/components/**/index.ts",
+      "!src/components/models.ts"
     ]
   },
   "browserslist": {

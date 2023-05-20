@@ -2,6 +2,8 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Input } from './Input';
+import { Loader } from '../Loader';
+import { Icon } from '../Icon';
 
 describe('Input Component', () => {
   it('should render the input with default props', () => {
@@ -13,7 +15,7 @@ describe('Input Component', () => {
 
     // then
     expect(screen.getByRole('textbox')).toHaveClass(
-      'focus:ring-blue-400 focus:border-blue-400 placeholder-gray-300 focus:placeholder-gray-400'
+      'focus:ring-blue-500 focus:border-blue-500 placeholder-gray-300 focus:placeholder-gray-400'
     );
     expect(screen.getByRole('textbox')).toHaveAttribute(
       'placeholder',
@@ -66,9 +68,24 @@ describe('Input Component', () => {
     expect(input).toHaveValue(testString);
   });
 
-  it('should render the input with loading state if loading prop is passed', () => {
+  it('should render the input with icon if icon prop is passed', () => {
+    // given
+    const iconName = 'MagnifyingGlassIcon';
+    const icon = <Icon name={iconName} />;
+
     // when
-    render(<Input loading />);
+    render(<Input icon={icon} />);
+
+    // then
+    expect(screen.getByLabelText(iconName)).toBeInTheDocument();
+  });
+
+  it('should render the input with loader if loader is passed in through icon prop', () => {
+    // given
+    const loader = <Loader />;
+
+    // when
+    render(<Input icon={loader} />);
 
     // then
     expect(screen.getByRole('status')).toBeInTheDocument();
