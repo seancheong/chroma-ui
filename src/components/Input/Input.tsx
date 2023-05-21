@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React, { HTMLInputTypeAttribute, useState } from 'react';
 
-interface IProps extends React.HTMLAttributes<HTMLInputElement> {
+interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   placeholder?: string;
   disabled?: boolean;
   error?: boolean;
