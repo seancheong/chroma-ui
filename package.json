@@ -31,7 +31,7 @@
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "rimraf storybook-static && storybook build",
-    "build-library": "rollup -c"
+    "build-library": "rimraf dist && rollup -c"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
