@@ -1,6 +1,6 @@
 {
   "name": "chroma-ui",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "A UI component library built with React and TailwindCSS",
   "license": "MIT",
   "author": "Sean Cheong Zhen Xiong (https://github.com/seancheong)",
