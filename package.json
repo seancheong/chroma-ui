@@ -62,7 +62,7 @@
     "babel-plugin-named-exports-order": "^0.0.2",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "postcss": "^8.4.23",
+    "postcss": "^8.4.24",
     "prop-types": "^15.8.1",
     "react-scripts": "5.0.1",
     "rollup": "^2.79.1",
