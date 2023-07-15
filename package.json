@@ -80,6 +80,7 @@
   "jest": {
     "collectCoverageFrom": [
       "src/components/**/*.{ts,tsx}",
+      "src/hooks/**/*.ts",
       "!src/components/**/*.stories.{ts,tsx}",
       "!src/components/**/index.ts",
       "!src/components/models.ts"
