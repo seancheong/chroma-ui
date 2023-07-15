@@ -1,4 +1,5 @@
 import { Args, Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 import { icons } from '../models';
 import { Input } from './Input';
 import { Icon } from '../Icon';
@@ -37,6 +38,10 @@ const meta = {
     iconPosition: {
       control: 'radio',
       description: 'The position of the icon',
+    },
+    value: {
+      control: 'text',
+      description: 'The controlled value of the input',
     },
   },
 } satisfies Meta<typeof Input>;
@@ -157,6 +162,57 @@ export const WithButton: Story = {
     docs: {
       description: {
         story: 'An example of input with button',
+      },
+    },
+  },
+};
+
+export const ControlledInput: Story = {
+  render: (args: Args) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [value, setValue] = React.useState('');
+
+    return (
+      <div className="flex">
+        <Button className="mr-4" onClick={() => setValue('test')}>
+          Set Input
+        </Button>
+
+        <div className="w-[320px]">
+          <Input
+            className="rounded-r-none"
+            placeholder="press the button to set the input value"
+            value={value}
+          />
+        </div>
+        <Button className="rounded-l-none" danger onClick={() => setValue('')}>
+          Remove Input
+        </Button>
+      </div>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'The value of the input is controlled by the parent component. In this example, the value is set to "test" when the button is clicked.',
+      },
+      source: {
+        code: `
+  <div className="flex">
+    <Button className="mr-4" onClick={() => setValue('test')}>
+      Set Input to Test
+    </Button>
+    <Input
+      className="rounded-r-none"
+      placeholder="press the button to set the input value"
+      value={value}
+    />
+    <Button className="rounded-l-none" danger onClick={() => setValue('')}>
+      Remove Input
+    </Button>
+  </div>
+        `,
       },
     },
   },
