@@ -44,7 +44,7 @@
     "@rollup/plugin-node-resolve": "^15.1.0",
     "@rollup/plugin-terser": "^0.4.3",
     "@storybook/addon-essentials": "^7.2.1",
-    "@storybook/addon-interactions": "^7.2.1",
+    "@storybook/addon-interactions": "^7.4.0",
     "@storybook/addon-links": "^7.2.1",
     "@storybook/addon-mdx-gfm": "^7.2.1",
     "@storybook/blocks": "^7.2.1",
