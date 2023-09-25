@@ -48,7 +48,7 @@
     "@storybook/addon-links": "^7.2.1",
     "@storybook/addon-mdx-gfm": "^7.2.1",
     "@storybook/blocks": "^7.2.1",
-    "@storybook/preset-create-react-app": "^7.2.1",
+    "@storybook/preset-create-react-app": "^7.4.5",
     "@storybook/react": "^7.2.1",
     "@storybook/react-webpack5": "^7.2.1",
     "@storybook/testing-library": "^0.2.0",
