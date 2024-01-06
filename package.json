@@ -36,7 +36,7 @@
   "dependencies": {
     "@heroicons/react": "^2.0.18",
     "classnames": "^2.3.2",
-    "postcss": "^8.4.27",
+    "postcss": "^8.4.33",
     "tailwindcss": "^3.3.3"
   },
   "devDependencies": {
