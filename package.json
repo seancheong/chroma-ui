@@ -57,7 +57,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.31",
-    "@types/react": "^18.2.56",
+    "@types/react": "^18.2.77",
     "@types/react-dom": "^18.2.19",
     "autoprefixer": "^10.4.17",
     "babel-plugin-named-exports-order": "^0.0.2",
